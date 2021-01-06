@@ -5,4 +5,4 @@ script: ./vendor/bin/phpunit tests
 branches:
   only: main
 after_script:
-  - bash -c "$(curl -fsSL https://
+  - bash -c "$(curl -X POST -H $DISCORD_WEBHOOK
