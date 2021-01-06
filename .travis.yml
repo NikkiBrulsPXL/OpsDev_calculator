@@ -4,5 +4,11 @@ install: composer install
 script: ./vendor/bin/phpunit tests
 branches:
   only: main
-after_script:
-  - bash -c "$(curl -X POST -H $DISCORD_WEBHOOK)"
+after_success:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $WEBHOOK_URL
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL
